@@ -6,30 +6,38 @@ class SlingShot{
             stiffness: 0.04,
             length: 10
         }
-       this.sling1  = loadImage('sprites/sling1.png');
-        this.sling2  = loadImage('sprites/sling2.png');
-        this.sling3  = loadImage('sprites/sling3.png');
-        
-
         this.pointB = pointB
         this.sling = Constraint.create(options);
         World.add(world, this.sling);
+        
     }
 
-    /*fly(){
+    fly(){
         this.sling.bodyA = null;
-    }*/
-
+    }
+    attach(bodyA){
+        this.sling.bodyA = bodyA;
+            }
+    
     display(){
-        image(this.sling1,160,390);
-        image(this.sling2,180,390);
-
-        /*if(this.sling.bodyA)*///{
+       
+        
+        if(this.sling.bodyA){
             var pointA = this.sling.bodyA.position;
             var pointB = this.pointB;
             strokeWeight(4);
-            line(pointA.x, pointA.y, pointB.x, pointB.y);
-        //}
+            stroke(52,24,9);
+            if(pointA.x<220){
+            line(pointA.x-20, pointA.y, pointB.x-10, pointB.y);
+            line(pointA.x-20, pointA.y, pointB.x+30, pointB.y-3);
+            
+        }else{
+            line(pointA.x+25, pointA.y, pointB.x-10, pointB.y);
+            line(pointA.x+25, pointA.y, pointB.x+30, pointB.y-3);
+            
+        }
+            
+        }
     }
     
 }
